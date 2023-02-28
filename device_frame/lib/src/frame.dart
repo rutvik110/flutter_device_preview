@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'info/device_type.dart';
 import 'info/info.dart';
@@ -24,6 +23,22 @@ import 'info/info.dart';
 /// * [Devices] to get all available devices.
 ///
 class DeviceFrame extends StatelessWidget {
+  /// Displays the given [screen] into the given [info]
+  /// simulated device.
+  ///
+  /// The orientation of the device can be updated if the frame supports
+  /// it (else it is ignored).
+  ///
+  /// If [isFrameVisible] is `true`, only the [screen] is displayed, but clipped with
+  /// the device screen shape.
+  const DeviceFrame({
+    Key? key,
+    required this.device,
+    required this.screen,
+    this.orientation = Orientation.portrait,
+    this.isFrameVisible = true,
+  }) : super(key: key);
+
   /// The screen that should be inserted into the simulated
   /// device.
   ///
@@ -42,22 +57,6 @@ class DeviceFrame extends StatelessWidget {
   /// Indicates whether the device frame is visible, else
   /// only the screen is displayed.
   final bool isFrameVisible;
-
-  /// Displays the given [screen] into the given [info]
-  /// simulated device.
-  ///
-  /// The orientation of the device can be updated if the frame supports
-  /// it (else it is ignored).
-  ///
-  /// If [isFrameVisible] is `true`, only the [screen] is displayed, but clipped with
-  /// the device screen shape.
-  const DeviceFrame({
-    Key? key,
-    required this.device,
-    required this.screen,
-    this.orientation = Orientation.portrait,
-    this.isFrameVisible = true,
-  }) : super(key: key);
 
   /// Creates a [MediaQuery] from the given device [info], and for the current device [orientation].
   ///
@@ -180,9 +179,9 @@ class _ScreenClipper extends CustomClipper<Path> {
 
   @override
   Path getClip(Size size) {
-    final path = (this.path ?? (Path()..addRect(Offset.zero & size)));
+    final path = this.path ?? (Path()..addRect(Offset.zero & size));
     final bounds = path.getBounds();
-    var transform = Matrix4.translationValues(-bounds.left, -bounds.top, 0);
+    final transform = Matrix4.translationValues(-bounds.left, -bounds.top, 0);
 
     return path.transform(transform.storage);
   }
