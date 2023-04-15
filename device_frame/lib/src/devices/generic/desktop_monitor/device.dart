@@ -15,6 +15,7 @@ DeviceInfo buildGenericDesktopMonitorDevice({
   required String name,
   required Size screenSize,
   required Rect windowPosition,
+  required double borderRadius,
   EdgeInsets safeAreas = EdgeInsets.zero,
   double pixelRatio = 2.0,
   EdgeInsets? rotatedSafeAreas,
@@ -39,5 +40,6 @@ DeviceInfo buildGenericDesktopMonitorDevice({
     rotatedSafeAreas: rotatedSafeAreas,
     framePainter: effectivePainter,
     screenPath: effectivePainter.createScreenPath(screenSize),
+    borderRadius: borderRadius,
   );
 }

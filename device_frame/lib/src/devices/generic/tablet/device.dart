@@ -12,6 +12,7 @@ DeviceInfo buildGenericTabletDevice({
   required String id,
   required String name,
   required Size screenSize,
+  required double borderRadius,
   EdgeInsets safeAreas = EdgeInsets.zero,
   EdgeInsets rotatedSafeAreas = EdgeInsets.zero,
   double pixelRatio = 2.0,
@@ -31,5 +32,6 @@ DeviceInfo buildGenericTabletDevice({
     rotatedSafeAreas: rotatedSafeAreas,
     framePainter: framePainter,
     screenPath: framePainter.createScreenPath(screenSize),
+    borderRadius: borderRadius,
   );
 }

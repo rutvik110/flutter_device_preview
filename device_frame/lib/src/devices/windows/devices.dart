@@ -1,5 +1,4 @@
 import 'package:device_frame/src/info/info.dart';
-
 import 'package:flutter/widgets.dart';
 
 /// A set of iOS devices.
@@ -9,6 +8,7 @@ class WindowsDevices {
   DeviceInfo get wideMonitor => _wideMonitor;
   static final _wideMonitor = DeviceInfo.genericDesktopMonitor(
     platform: TargetPlatform.windows,
+    borderRadius: 32,
     name: 'Large',
     id: 'large',
     screenSize: const Size(1920, 1080),
@@ -26,6 +26,7 @@ class WindowsDevices {
   static final _laptop = DeviceInfo.genericLaptop(
     platform: TargetPlatform.windows,
     name: 'Laptop',
+    borderRadius: 32,
     id: 'laptop',
     screenSize: const Size(1920, 1080),
     windowPosition: Rect.fromCenter(

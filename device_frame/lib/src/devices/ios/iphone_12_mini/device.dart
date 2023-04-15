@@ -7,6 +7,7 @@ part 'frame.g.dart';
 part 'screen.g.dart';
 
 final info = DeviceInfo(
+  borderRadius: 128,
   identifier: const DeviceIdentifier(
     TargetPlatform.iOS,
     DeviceType.phone,

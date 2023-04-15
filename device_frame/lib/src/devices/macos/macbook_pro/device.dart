@@ -1,9 +1,9 @@
 import 'dart:ui' as ui;
 
+import 'package:device_frame/src/devices/generic/base/draw_extensions.dart';
 import 'package:device_frame/src/info/device_type.dart';
 import 'package:device_frame/src/info/identifier.dart';
 import 'package:device_frame/src/info/info.dart';
-import 'package:device_frame/src/devices/generic/base/draw_extensions.dart';
 import 'package:flutter/material.dart';
 
 part 'frame.dart';
@@ -13,6 +13,7 @@ final info = () {
   const screenBounds = Rect.fromLTWH(346.68, 98.2, 2298.82, 1437.32);
   final windowContentSize = Size(windowSize.width, windowSize.height - 30);
   return DeviceInfo(
+    borderRadius: 32,
     identifier: const DeviceIdentifier(
       TargetPlatform.macOS,
       DeviceType.laptop,

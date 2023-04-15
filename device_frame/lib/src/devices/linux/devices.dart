@@ -7,6 +7,7 @@ class LinuxDevices {
 
   DeviceInfo get wideMonitor => _wideMonitor;
   static final _wideMonitor = DeviceInfo.genericDesktopMonitor(
+    borderRadius: 32,
     platform: TargetPlatform.linux,
     name: 'Large',
     id: 'large',
@@ -23,6 +24,7 @@ class LinuxDevices {
 
   DeviceInfo get laptop => _laptop;
   static final _laptop = DeviceInfo.genericLaptop(
+    borderRadius: 32,
     platform: TargetPlatform.linux,
     name: 'Laptop',
     id: 'laptop',

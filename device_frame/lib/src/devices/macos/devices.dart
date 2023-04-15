@@ -1,7 +1,7 @@
-import 'package:device_frame/src/info/info.dart';
-import 'package:flutter/widgets.dart';
 import 'package:device_frame/src/devices/macos/macbook_pro/device.dart'
     as i_macbook_pro;
+import 'package:device_frame/src/info/info.dart';
+import 'package:flutter/widgets.dart';
 
 /// A set of macOS devices.
 class MacOSDevices {
@@ -11,6 +11,7 @@ class MacOSDevices {
   DeviceInfo get wideMonitor => _wideMonitor;
   static final _wideMonitor = DeviceInfo.genericDesktopMonitor(
     platform: TargetPlatform.macOS,
+    borderRadius: 32,
     name: 'Large',
     id: 'large',
     screenSize: const Size(1920, 1080),

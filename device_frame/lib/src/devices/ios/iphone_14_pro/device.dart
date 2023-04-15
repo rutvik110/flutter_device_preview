@@ -30,4 +30,5 @@ final info = DeviceInfo(
   ),
   framePainter: const _FramePainter(),
   screenPath: _screenPath,
+  borderRadius: 128,
 );

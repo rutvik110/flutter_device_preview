@@ -32,6 +32,7 @@ class DeviceFrame extends StatelessWidget {
   const DeviceFrame({
     required this.device,
     required this.screen,
+    this.boxShadow,
     Key? key,
     this.orientation = Orientation.portrait,
     this.isFrameVisible = true,
@@ -55,6 +56,9 @@ class DeviceFrame extends StatelessWidget {
   /// Indicates whether the device frame is visible, else
   /// only the screen is displayed.
   final bool isFrameVisible;
+
+  /// boshadow
+  final BoxShadow? boxShadow;
 
   /// Creates a [MediaQuery] from the given device [info], and for the current device [orientation].
   ///
@@ -136,52 +140,62 @@ class DeviceFrame extends StatelessWidget {
     final stack = SizedBox(
       width: isFrameVisible ? frameSize.width : bounds.width,
       height: isFrameVisible ? frameSize.height : bounds.height,
-      child: Stack(
-        children: [
-          if (isFrameVisible)
-            Positioned.fill(
-              key: const Key('frame'),
-              child: CustomPaint(
-                key: ValueKey(device.identifier),
-                painter: device.framePainter,
-              ),
-            ),
-          Positioned(
-            key: const Key('Screen'),
-            left: isFrameVisible
-                ? isiPhone14
-                    ? difference.width / 2
-                    : bounds.left
-                : 0,
-            top: isFrameVisible
-                ? isiPhone14
-                    ? difference.height / 2
-                    : bounds.top
-                : 0,
-            width: bounds.width,
-            height: bounds.height,
-            child: ClipPath(
-              clipper: _ScreenClipper(
-                device.screenPath,
-              ),
-              child: FittedBox(
-                child: _screen(context, device),
-              ),
-            ),
-          ),
-          if (isiPhone14)
-            Positioned.fill(
-              top: 60,
-              child: Align(
-                alignment: Alignment.topCenter,
-                key: const Key('FrameOverlay'),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(device.borderRadius),
+          boxShadow: boxShadow == null
+              ? null
+              : [
+                  boxShadow!,
+                ],
+        ),
+        child: Stack(
+          children: [
+            if (isFrameVisible)
+              Positioned.fill(
+                key: const Key('frame'),
                 child: CustomPaint(
-                  size: const Size(247, 71),
-                  painter: FrameOverlayCustomPainter(),
+                  key: ValueKey(device.identifier),
+                  painter: device.framePainter,
+                ),
+              ),
+            Positioned(
+              key: const Key('Screen'),
+              left: isFrameVisible
+                  ? isiPhone14
+                      ? difference.width / 2
+                      : bounds.left
+                  : 0,
+              top: isFrameVisible
+                  ? isiPhone14
+                      ? difference.height / 2
+                      : bounds.top
+                  : 0,
+              width: bounds.width,
+              height: bounds.height,
+              child: ClipPath(
+                clipper: _ScreenClipper(
+                  device.screenPath,
+                ),
+                child: FittedBox(
+                  child: _screen(context, device),
                 ),
               ),
             ),
-        ],
+            if (isiPhone14)
+              Positioned.fill(
+                top: 60,
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  key: const Key('FrameOverlay'),
+                  child: CustomPaint(
+                    size: const Size(247, 71),
+                    painter: FrameOverlayCustomPainter(),
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
 

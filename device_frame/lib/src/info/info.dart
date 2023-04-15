@@ -22,9 +22,6 @@ abstract class DeviceInfo with _$DeviceInfo {
     /// The display name of the device.
     required String name,
 
-    /// The safe areas when the device is in landscape orientation.
-    @Default(null) EdgeInsets? rotatedSafeAreas,
-
     /// The safe areas when the device is in portrait orientation.
     required EdgeInsets safeAreas,
 
@@ -42,6 +39,12 @@ abstract class DeviceInfo with _$DeviceInfo {
 
     /// The size in points of the screen content.
     required Size screenSize,
+
+    /// border radius of the frame
+    required double borderRadius,
+
+    /// The safe areas when the device is in landscape orientation.
+    @Default(null) EdgeInsets? rotatedSafeAreas,
   }) = _DeviceInfo;
 
   factory DeviceInfo.genericTablet({
@@ -49,6 +52,7 @@ abstract class DeviceInfo with _$DeviceInfo {
     required String id,
     required String name,
     required Size screenSize,
+    required double borderRadius,
     EdgeInsets safeAreas = EdgeInsets.zero,
     EdgeInsets rotatedSafeAreas = EdgeInsets.zero,
     double pixelRatio = 2.0,
@@ -63,6 +67,7 @@ abstract class DeviceInfo with _$DeviceInfo {
         rotatedSafeAreas: rotatedSafeAreas,
         pixelRatio: pixelRatio,
         framePainter: framePainter,
+        borderRadius: borderRadius,
       );
 
   factory DeviceInfo.genericPhone({
@@ -70,6 +75,7 @@ abstract class DeviceInfo with _$DeviceInfo {
     required String id,
     required String name,
     required Size screenSize,
+    required double borderRadius,
     EdgeInsets safeAreas = EdgeInsets.zero,
     EdgeInsets rotatedSafeAreas = EdgeInsets.zero,
     double pixelRatio = 2.0,
@@ -84,6 +90,7 @@ abstract class DeviceInfo with _$DeviceInfo {
         rotatedSafeAreas: rotatedSafeAreas,
         pixelRatio: pixelRatio,
         framePainter: framePainter,
+        borderRadius: borderRadius,
       );
 
   factory DeviceInfo.genericDesktopMonitor({
@@ -92,6 +99,7 @@ abstract class DeviceInfo with _$DeviceInfo {
     required String name,
     required Size screenSize,
     required Rect windowPosition,
+    required double borderRadius,
     EdgeInsets safeAreas = EdgeInsets.zero,
     double pixelRatio = 2.0,
     GenericDesktopMonitorFramePainter? framePainter,
@@ -105,6 +113,7 @@ abstract class DeviceInfo with _$DeviceInfo {
         safeAreas: safeAreas,
         pixelRatio: pixelRatio,
         framePainter: framePainter,
+        borderRadius: borderRadius,
       );
 
   factory DeviceInfo.genericLaptop({
@@ -113,6 +122,7 @@ abstract class DeviceInfo with _$DeviceInfo {
     required String name,
     required Size screenSize,
     required Rect windowPosition,
+    required double borderRadius,
     EdgeInsets safeAreas = EdgeInsets.zero,
     double pixelRatio = 2.0,
     GenericLaptopFramePainter? framePainter,
@@ -126,6 +136,7 @@ abstract class DeviceInfo with _$DeviceInfo {
         safeAreas: safeAreas,
         pixelRatio: pixelRatio,
         framePainter: framePainter,
+        borderRadius: borderRadius,
       );
 }
 
