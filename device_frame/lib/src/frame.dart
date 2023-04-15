@@ -141,6 +141,8 @@ class DeviceFrame extends StatelessWidget {
         device.identifier.name == Devices.ios.iPhone14Pro.identifier.name;
     bool isGooglePixel5 =
         device.identifier.name == Devices.android.googlePixel5.identifier.name;
+    bool isGooglePixel6Pro = device.identifier.name ==
+        Devices.android.googlePixel6Pro.identifier.name;
 
     final stack = SizedBox(
       width: isFrameVisible ? frameSize.width : bounds.width,
@@ -167,18 +169,14 @@ class DeviceFrame extends StatelessWidget {
             Positioned(
               key: const Key('Screen'),
               left: isFrameVisible
-                  ? isiPhone14
+                  ? isiPhone14 || isGooglePixel5 || isGooglePixel6Pro
                       ? difference.width / 2
-                      : isGooglePixel5
-                          ? difference.width / 2
-                          : bounds.left
+                      : bounds.left
                   : 0,
               top: isFrameVisible
-                  ? isiPhone14
-                      ? difference.height / 2
-                      : isGooglePixel5
-                          ? difference.width / 2
-                          : bounds.top
+                  ? isiPhone14 || isGooglePixel5 || isGooglePixel6Pro
+                      ? difference.width / 2
+                      : bounds.top
                   : 0,
               width: bounds.width,
               height: bounds.height,
@@ -207,6 +205,18 @@ class DeviceFrame extends StatelessWidget {
               Positioned(
                 left: 98,
                 top: 99,
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  key: const Key('FrameOverlay'),
+                  child: CustomPaint(
+                    size: const Size(76, 76),
+                    painter: GooglePixelCameraPainter(),
+                  ),
+                ),
+              ),
+            if (isGooglePixel6Pro)
+              Positioned.fill(
+                top: 70,
                 child: Align(
                   alignment: Alignment.topCenter,
                   key: const Key('FrameOverlay'),

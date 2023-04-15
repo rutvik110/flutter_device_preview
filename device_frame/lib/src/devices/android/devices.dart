@@ -1,5 +1,7 @@
 import 'package:device_frame/src/devices/android/google_pixel_5/device.dart'
     as google_pixel_5;
+import 'package:device_frame/src/devices/android/google_pixel_6_pro/device.dart'
+    as google_pixel_6_pro;
 import 'package:device_frame/src/devices/android/oneplus_8_pro/device.dart'
     as i_oneplus_8_pro;
 import 'package:device_frame/src/devices/android/samsung_galaxy_a50/device.dart'
@@ -31,6 +33,7 @@ class AndroidDevices {
 
   DeviceInfo get sonyXperia1II => i_sony_xperia_1_ii.info;
   DeviceInfo get googlePixel5 => google_pixel_5.info;
+  DeviceInfo get googlePixel6Pro => google_pixel_6_pro.info;
 
   DeviceInfo get smallPhone => _smallPhone;
   static final _smallPhone = DeviceInfo.genericPhone(
@@ -139,5 +142,6 @@ class AndroidDevices {
         mediumTablet,
         largeTablet,
         googlePixel5,
+        googlePixel6Pro,
       ];
 }
