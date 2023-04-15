@@ -1,3 +1,5 @@
+import 'package:device_frame/src/devices/android/google_pixel_5/device.dart'
+    as google_pixel_5;
 import 'package:device_frame/src/devices/android/oneplus_8_pro/device.dart'
     as i_oneplus_8_pro;
 import 'package:device_frame/src/devices/android/samsung_galaxy_a50/device.dart'
@@ -28,6 +30,7 @@ class AndroidDevices {
   DeviceInfo get onePlus8Pro => i_oneplus_8_pro.info;
 
   DeviceInfo get sonyXperia1II => i_sony_xperia_1_ii.info;
+  DeviceInfo get googlePixel5 => google_pixel_5.info;
 
   DeviceInfo get smallPhone => _smallPhone;
   static final _smallPhone = DeviceInfo.genericPhone(
@@ -37,16 +40,10 @@ class AndroidDevices {
     id: 'small',
     screenSize: const Size(360, 640),
     safeAreas: const EdgeInsets.only(
-      left: 0.0,
-      top: 24.0,
-      right: 0.0,
-      bottom: 0.0,
+      top: 24,
     ),
     rotatedSafeAreas: const EdgeInsets.only(
-      left: 0.0,
-      top: 24.0,
-      right: 0.0,
-      bottom: 0.0,
+      top: 24,
     ),
   );
 
@@ -58,16 +55,10 @@ class AndroidDevices {
     id: 'medium',
     screenSize: const Size(412, 732),
     safeAreas: const EdgeInsets.only(
-      left: 0.0,
-      top: 24.0,
-      right: 0.0,
-      bottom: 0.0,
+      top: 24,
     ),
     rotatedSafeAreas: const EdgeInsets.only(
-      left: 0.0,
-      top: 24.0,
-      right: 0.0,
-      bottom: 0.0,
+      top: 24,
     ),
   );
 
@@ -79,16 +70,10 @@ class AndroidDevices {
     id: 'big',
     screenSize: const Size(480, 853),
     safeAreas: const EdgeInsets.only(
-      left: 0.0,
-      top: 24.0,
-      right: 0.0,
-      bottom: 0.0,
+      top: 24,
     ),
     rotatedSafeAreas: const EdgeInsets.only(
-      left: 0.0,
-      top: 24.0,
-      right: 0.0,
-      bottom: 0.0,
+      top: 24,
     ),
   );
 
@@ -100,16 +85,10 @@ class AndroidDevices {
     id: 'small',
     screenSize: const Size(800, 1280),
     safeAreas: const EdgeInsets.only(
-      left: 0.0,
-      top: 24.0,
-      right: 0.0,
-      bottom: 0.0,
+      top: 24,
     ),
     rotatedSafeAreas: const EdgeInsets.only(
-      left: 0.0,
-      top: 24.0,
-      right: 0.0,
-      bottom: 0.0,
+      top: 24,
     ),
   );
 
@@ -121,16 +100,10 @@ class AndroidDevices {
     id: 'medium',
     screenSize: const Size(1024, 1350),
     safeAreas: const EdgeInsets.only(
-      left: 0.0,
-      top: 24.0,
-      right: 0.0,
-      bottom: 0.0,
+      top: 24,
     ),
     rotatedSafeAreas: const EdgeInsets.only(
-      left: 0.0,
-      top: 24.0,
-      right: 0.0,
-      bottom: 0.0,
+      top: 24,
     ),
   );
 
@@ -142,16 +115,10 @@ class AndroidDevices {
     id: 'large',
     screenSize: const Size(1280, 1880),
     safeAreas: const EdgeInsets.only(
-      left: 0.0,
-      top: 24.0,
-      right: 0.0,
-      bottom: 0.0,
+      top: 24,
     ),
     rotatedSafeAreas: const EdgeInsets.only(
-      left: 0.0,
-      top: 24.0,
-      right: 0.0,
-      bottom: 0.0,
+      top: 24,
     ),
   );
 
@@ -171,5 +138,6 @@ class AndroidDevices {
         smallTablet,
         mediumTablet,
         largeTablet,
+        googlePixel5,
       ];
 }

@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
 
@@ -137,6 +139,9 @@ class DeviceFrame extends StatelessWidget {
     );
     bool isiPhone14 =
         device.identifier.name == Devices.ios.iPhone14Pro.identifier.name;
+    bool isGooglePixel5 =
+        device.identifier.name == Devices.android.googlePixel5.identifier.name;
+
     final stack = SizedBox(
       width: isFrameVisible ? frameSize.width : bounds.width,
       height: isFrameVisible ? frameSize.height : bounds.height,
@@ -164,12 +169,16 @@ class DeviceFrame extends StatelessWidget {
               left: isFrameVisible
                   ? isiPhone14
                       ? difference.width / 2
-                      : bounds.left
+                      : isGooglePixel5
+                          ? difference.width / 2
+                          : bounds.left
                   : 0,
               top: isFrameVisible
                   ? isiPhone14
                       ? difference.height / 2
-                      : bounds.top
+                      : isGooglePixel5
+                          ? difference.width / 2
+                          : bounds.top
                   : 0,
               width: bounds.width,
               height: bounds.height,
@@ -191,6 +200,19 @@ class DeviceFrame extends StatelessWidget {
                   child: CustomPaint(
                     size: const Size(247, 71),
                     painter: FrameOverlayCustomPainter(),
+                  ),
+                ),
+              ),
+            if (isGooglePixel5)
+              Positioned(
+                left: 98,
+                top: 99,
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  key: const Key('FrameOverlay'),
+                  child: CustomPaint(
+                    size: const Size(76, 76),
+                    painter: GooglePixelCameraPainter(),
                   ),
                 ),
               ),
@@ -395,6 +417,125 @@ class FrameOverlayCustomPainter extends CustomPainter {
     Paint paint3Fill = Paint()..style = PaintingStyle.fill;
     paint3Fill.color = const Color(0xff636F73).withOpacity(1);
     canvas.drawPath(path_3, paint3Fill);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+}
+
+//Copy this CustomPainter code to the Bottom of the File
+class GooglePixelCameraPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint0Fill = Paint()..style = PaintingStyle.fill;
+    paint0Fill.color = Colors.black.withOpacity(1);
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: Offset(size.width * 0.4995908, size.height * 0.5009065),
+        width: size.width * 0.9952500,
+        height: size.height * 0.9822571,
+      ),
+      paint0Fill,
+    );
+
+    Paint paint1Fill = Paint()..style = PaintingStyle.fill;
+    paint1Fill.color = const Color(0xff0A0A0A).withOpacity(1);
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: Offset(size.width * 0.4953250, size.height * 0.4966922),
+        width: size.width * 0.7499026,
+        height: size.height * 0.7401117,
+      ),
+      paint1Fill,
+    );
+
+    Paint paint2Fill = Paint()..style = PaintingStyle.fill;
+    paint2Fill.shader =
+        ui.Gradient.radial(const Offset(0, 0), size.width * 0.01315789, [
+      const Color(0xff000000).withOpacity(0),
+      const Color(0xff5B5B5B).withOpacity(0.21),
+      const Color(0xff000000).withOpacity(0)
+    ], [
+      0.552083,
+      0.666667,
+      0.708333
+    ]);
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: Offset(size.width * 0.4953250, size.height * 0.4966922),
+        width: size.width * 0.7499026,
+        height: size.height * 0.7401117,
+      ),
+      paint2Fill,
+    );
+
+    Paint paint3Fill = Paint()..style = PaintingStyle.fill;
+    paint3Fill.color = Colors.black.withOpacity(1);
+    // canvas.drawOval(
+    //   Rect.fromCenter(
+    //     center: Offset(size.width * 0.1550408, size.height * 0.1530364),
+    //     width: size.width * 0.3100816,
+    //     height: size.height * 0.3060727,
+    //   ),
+    //   paint3Fill,
+    // );
+
+    Paint paint4Fill = Paint()..style = PaintingStyle.fill;
+    paint4Fill.shader =
+        ui.Gradient.radial(const Offset(0, 0), size.width * 0.01315789, [
+      const Color(0xff000000).withOpacity(0.718268),
+      const Color(0xff6777CA).withOpacity(1),
+      const Color(0xff6C86CA).withOpacity(1),
+      const Color(0xff5583C7).withOpacity(1),
+      const Color(0xff000000).withOpacity(0.718268),
+      const Color(0xff5351BA).withOpacity(0)
+    ], [
+      0.109898,
+      0.266542,
+      0.473888,
+      0.665391,
+      0.865938,
+      1
+    ]);
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: Offset(size.width * 0.1550408, size.height * 0.1530364),
+        width: size.width * 0.3100816,
+        height: size.height * 0.3060727,
+      ),
+      paint4Fill,
+    );
+
+    Paint paint5Fill = Paint()..style = PaintingStyle.fill;
+    paint5Fill.shader = ui.Gradient.radial(
+        const Offset(0, 0), size.width * 0.01315789, [
+      const Color(0xff000000).withOpacity(1),
+      const Color(0xff767676).withOpacity(0)
+    ], [
+      0.0520833,
+      0.671875
+    ]);
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: Offset(size.width * 0.1550408, size.height * 0.1530364),
+        width: size.width * 0.3100816,
+        height: size.height * 0.3060727,
+      ),
+      paint5Fill,
+    );
+
+    Paint paint6Fill = Paint()..style = PaintingStyle.fill;
+    paint6Fill.color = const Color(0xffBA7FD6).withOpacity(1);
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: Offset(size.width * 0.5545329, size.height * 0.4772143),
+        width: size.width * 0.07894737,
+        height: size.height * 0.07790649,
+      ),
+      paint6Fill,
+    );
   }
 
   @override
